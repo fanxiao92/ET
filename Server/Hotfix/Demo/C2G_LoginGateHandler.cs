@@ -14,7 +14,7 @@ namespace ET
 				return;
 			}
 			
-			string account = scene.GetComponent<GateSessionKeyComponent>().Get(request.Key);
+			string account = scene.GetComponent<LobbySessionKeyComponent>().Get(request.Key);
 			if (account == null)
 			{
 				response.Error = ErrorCode.ERR_ConnectGateKeyError;
@@ -23,7 +23,7 @@ namespace ET
 				return;
 			}
 			Player player = EntityFactory.Create<Player, string>(Game.Scene, account);
-			scene.GetComponent<PlayerComponent>().Add(player);
+			scene.GetComponent<PlayerContextComponent>().Add(player);
 			session.AddComponent<SessionPlayerComponent>().Player = player;
 			session.AddComponent<MailBoxComponent, MailboxType>(MailboxType.GateSession);
 

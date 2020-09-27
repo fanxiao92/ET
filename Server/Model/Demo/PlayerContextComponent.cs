@@ -3,17 +3,17 @@ using System.Linq;
 
 namespace ET
 {
-	public class PlayerComponentSystem : AwakeSystem<PlayerComponent>
+	public class PlayerComponentSystem : AwakeSystem<PlayerContextComponent>
 	{
-		public override void Awake(PlayerComponent self)
+		public override void Awake(PlayerContextComponent self)
 		{
 			self.Awake();
 		}
 	}
 	
-	public class PlayerComponent : Entity
+	public class PlayerContextComponent : Entity
 	{
-		public static PlayerComponent Instance { get; private set; }
+		public static PlayerContextComponent Instance { get; private set; }
 
 		public Player MyPlayer;
 		

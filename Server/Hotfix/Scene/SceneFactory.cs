@@ -1,5 +1,7 @@
 
 
+using System;
+
 namespace ET
 {
     public static class SceneFactory
@@ -19,19 +21,13 @@ namespace ET
 
             switch (scene.SceneType)
             {
-                case SceneType.Realm:
+                case SceneType.Login:
                     scene.AddComponent<NetOuterComponent, string>(startSceneConfig.OuterAddress);
                     break;
-                case SceneType.Gate:
+                case SceneType.Lobby:
                     scene.AddComponent<NetOuterComponent, string>(startSceneConfig.OuterAddress);
-                    scene.AddComponent<PlayerComponent>();
-                    scene.AddComponent<GateSessionKeyComponent>();
-                    break;
-                case SceneType.Map:
-                    scene.AddComponent<UnitComponent>();
-                    break;
-                case SceneType.Location:
-                    scene.AddComponent<LocationComponent>();
+                    scene.AddComponent<PlayerContextComponent>();
+                    scene.AddComponent<LobbySessionKeyComponent>();
                     break;
             }
 
